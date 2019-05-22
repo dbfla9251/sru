@@ -1,0 +1,85 @@
+<head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <script type="text/javascript">
+                var fulltext = "{{fulltext}}";
+        </script>
+        <style>
+              html{
+                      background-image:url(https://cdn.pixabay.com/photo/2014/06/16/23/40/blue-370128_1280.png);
+                      background-size: cover;
+                      font-family:나눔고딕;
+                      color:white;
+                      width: 1535px;
+                      height:500px;
+              }
+              p{
+                font-weight: bold;
+                font-size:50px;
+                text-shadow: 1px 0 #4374D9, 0 1px #4374D9, 1px 0 #4374D9, 0 1px #4374D9;
+              }
+              .btn { 
+                      display:white; 
+                      width:200px; 
+                      height:40px;
+                      line-height:40px; 
+                      border:1px #0c8ee4 solid;
+                      margin:15px auto; 
+                      background-color:#2194E0; 
+                      text-align:center; 
+                      cursor: pointer;
+                      color:rgb(255, 255, 255); 
+                      transition:all 0.9s, color 0.3; 
+                }
+                .hover:hover{box-shadow: 0 80px 0 0 rgb(57, 127, 184) inset, 0 -80px 0 0 rgb(45, 161, 255) inset;}
+        </style>
+</head>
+<body>
+       <center >
+        </br></br></br></br>
+        <p>Please enter a sentence!</p>
+
+        
+        {{fulltext}}
+
+        </br>
+                <textarea cols="70" rows="20" name='fulltext'></textarea>
+        </br></br></br>
+                <table border=0>
+                        <td>       
+                                <button type="submit" class="btn hover" onclick="fn.fulltext()">fulltext</button>
+                        </td>
+                        <td>
+                                <button class="btn hover" onclick="fn.count()">Total Wrods</button>
+                        </td>
+                </table>
+        </center>
+
+        <script type='text/javascript'>
+                
+                var fn = {
+                        conn : function(){
+                                var _txt = $('textarea').val();
+                                return $.ajax({
+                                        method : 'get',
+                                        url : '/api_count',
+                                        data:{
+                                                fulltext : _txt
+                                        }
+                                });
+                        },
+                        fulltext : function(){
+                                fn.conn()
+                                .then(function(res){
+                                        console.log(res);
+                                        alert('입력한 단어는 ' + res.fulltext + ' 입니다');
+                                })
+                        },
+                        count : function(){
+                                fn.conn()
+                                .then(function(res){
+                                        alert('입력하신 전체 텍스트는  '+ res.total +' 단어로 구성되어 있습니다.')
+                                })
+                        }
+                }
+        </script>
+</body>

@@ -1,0 +1,69 @@
+<head>
+        <style>
+                p {
+                        font-weight: bold;
+                        position: relative;
+                        display: inline-block;
+                        background: linear-gradient(-90deg, #ffffff 70%, #2194E0 30%);
+                        -webkit-background-clip: text;
+                        -webkit-text-fill-color: transparent;
+                        white-space: nowrap;
+                }
+                html{
+                        background-image:url(https://cdn.pixabay.com/photo/2014/06/16/23/40/blue-370128_1280.png);
+                        background-size: cover;
+                        font-family:나눔고딕;
+                        color:white;
+                        font-size:50px;
+                        width: 1535px;
+                        height:500px;
+                }
+                .button {
+                        padding: 0.75em 2em;
+                        text-align: center;
+                        text-decoration: none;
+                        color: #2194E0;
+                        border: 2px solid #2194E0;
+                        font-size: 24px;
+                        display: inline-block;
+                        border-radius: 0.3em;
+                        transition: all 0.2s ease-in-out;
+                        position: relative;
+                        overflow: hidden;
+                }
+                .button:before {
+                        content: "";
+                        background-color: rgba(255, 255, 255, 0.5);
+                        height: 100%;
+                        width: 3em;
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: -4.5em;
+                        -webkit-transform: skewX(-45deg) translateX(0);
+                        transform: skewX(-45deg) translateX(0);
+                        transition: none;
+                }
+                .button:hover {
+                        background-color: #2194E0;
+                        color: #fff;
+                        border-bottom: 4px solid #1977b5;
+                }
+                .button:hover:before {
+                        -webkit-transform: skewX(-45deg) translateX(13.5em);
+                        transform: skewX(-45deg) translateX(13.5em);
+                        transition: all 0.5s ease-in-out;
+                }
+        </style>
+</head>
+<body>
+       <center>
+       </br></br></br></br>
+                <p >Word Count 페이지에 오신 것을 환영합니다!</p>
+        </br>
+        <div class="wrapper">
+                        <a href='{% url "count" %}' class="button">Click Me!</a>
+        </div>
+        </br></br></br>
+        </center>  
+</body>
